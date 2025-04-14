@@ -2,10 +2,12 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL!, 
-  import.meta.env.VITE_SUPABASE_ANON_KEY!
-);
+// Safely access environment variables with fallbacks
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+
+// Initialize the Supabase client with proper error handling
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 interface AuthContextType {
   user: any;
@@ -25,11 +27,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    const session = supabase.auth.getSession();
-    session.then(({ data }) => {
+    // Check for existing session on component mount
+    const fetchSession = async () => {
+      const { data } = await supabase.auth.getSession();
       setUser(data.session?.user || null);
-    });
+    };
+    
+    fetchSession();
 
+    // Listen for auth changes
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         setUser(session?.user || null);
