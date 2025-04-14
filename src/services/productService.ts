@@ -166,6 +166,57 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=800",
     sizes: ["4-5Y", "6-7Y", "8-9Y", "10-11Y"],
     colors: ["Red", "Blue", "Black"]
+  },
+  // Expanded Kids Collection
+  {
+    id: "16",
+    name: "Dinosaur Adventure Backpack",
+    price: 899,
+    description: "Fun dinosaur-themed backpack perfect for school or day trips.",
+    category: "kids",
+    image: "https://images.unsplash.com/photo-1620932014447-delrmoe3hh8?w=800",
+    sizes: ["S", "M"],
+    colors: ["Green", "Blue", "Red"]
+  },
+  {
+    id: "17",
+    name: "Superhero Graphic T-Shirt",
+    price: 499,
+    description: "Colorful superhero print t-shirt that sparks imagination.",
+    category: "kids",
+    image: "https://images.unsplash.com/photo-1521577352947-9bb1bea34b74?w=800",
+    sizes: ["2-3Y", "3-4Y", "4-5Y"],
+    colors: ["Blue", "Red", "Gray"]
+  },
+  {
+    id: "18",
+    name: "Cozy Fleece Hoodie",
+    price: 799,
+    description: "Warm and soft hoodie for chilly days and comfortable play.",
+    category: "kids",
+    image: "https://images.unsplash.com/photo-1580784264288-c129656d0f02?w=800",
+    sizes: ["3-4Y", "4-5Y", "5-6Y"],
+    colors: ["Navy", "Pink", "Gray"]
+  },
+  {
+    id: "19",
+    name: "Playful Cargo Shorts",
+    price: 599,
+    description: "Comfortable cargo shorts with multiple pockets for little explorers.",
+    category: "kids",
+    image: "https://images.unsplash.com/photo-1596744405770-7876254?w=800",
+    sizes: ["2-3Y", "3-4Y", "4-5Y"],
+    colors: ["Khaki", "Blue", "Green"]
+  },
+  {
+    id: "20",
+    name: "Rainbow Unicorn Sweater",
+    price: 999,
+    description: "Magical unicorn-themed sweater that's soft and adorable.",
+    category: "kids",
+    image: "https://images.unsplash.com/photo-1590239906467-b09194f83075?w=800",
+    sizes: ["3-4Y", "4-5Y", "5-6Y"],
+    colors: ["Purple", "Pink", "White"]
   }
 ];
 
