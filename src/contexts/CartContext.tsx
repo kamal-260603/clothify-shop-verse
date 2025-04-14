@@ -39,8 +39,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const TAX_RATE = 0.10; // 10% tax rate
-  const SHIPPING_FEE = 10; // $10 shipping fee
-  const FREE_SHIPPING_THRESHOLD = 100; // Free shipping for orders over $100
+  const SHIPPING_FEE = 100; // ₹100 shipping fee
+  const FREE_SHIPPING_THRESHOLD = 2000; // Free shipping for orders over ₹2000
 
   // Load cart from localStorage
   useEffect(() => {

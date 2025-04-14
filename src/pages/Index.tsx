@@ -1,13 +1,14 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { getFeaturedProducts } from '../services/productService';
+import { getProducts } from '../services/productService';
 import { ArrowRight } from 'lucide-react';
 
 const HomePage = () => {
-  const featuredMens = getFeaturedProducts(4).filter(p => p.category === 'men').slice(0, 2);
-  const featuredWomens = getFeaturedProducts(4).filter(p => p.category === 'women').slice(0, 2);
-  const featuredKids = getFeaturedProducts(4).filter(p => p.category === 'kids').slice(0, 2);
+  const allProducts = getProducts();
+  const featuredMens = allProducts.filter(p => p.category === 'men').slice(0, 2);
+  const featuredWomens = allProducts.filter(p => p.category === 'women').slice(0, 2);
+  const featuredKids = allProducts.filter(p => p.category === 'kids').slice(0, 2);
 
   return (
     <div className="flex flex-col w-full">
@@ -26,7 +27,7 @@ const HomePage = () => {
                 <Link to="/products">Shop Now</Link>
               </Button>
               <Button asChild variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 button-hover-effect">
-                <Link to="/products/new">New Arrivals</Link>
+                <Link to="/products">New Arrivals</Link>
               </Button>
             </div>
           </div>
@@ -123,7 +124,7 @@ const HomePage = () => {
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-800 group-hover:text-lavender transition-colors">{product.name}</h3>
                   <div className="flex justify-between items-center mt-2">
-                    <p className="text-gray-700 font-medium">${product.price.toFixed(2)}</p>
+                    <p className="text-gray-700 font-medium">₹{product.price.toFixed(2)}</p>
                     <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">{product.category}</span>
                   </div>
                 </div>
@@ -147,7 +148,7 @@ const HomePage = () => {
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-800 group-hover:text-lavender transition-colors">{product.name}</h3>
                   <div className="flex justify-between items-center mt-2">
-                    <p className="text-gray-700 font-medium">${product.price.toFixed(2)}</p>
+                    <p className="text-gray-700 font-medium">₹{product.price.toFixed(2)}</p>
                     <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">{product.category}</span>
                   </div>
                 </div>
@@ -171,7 +172,7 @@ const HomePage = () => {
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-800 group-hover:text-lavender transition-colors">{product.name}</h3>
                   <div className="flex justify-between items-center mt-2">
-                    <p className="text-gray-700 font-medium">${product.price.toFixed(2)}</p>
+                    <p className="text-gray-700 font-medium">₹{product.price.toFixed(2)}</p>
                     <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">{product.category}</span>
                   </div>
                 </div>

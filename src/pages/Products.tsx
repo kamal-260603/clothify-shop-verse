@@ -11,7 +11,7 @@ const ProductsPage = () => {
   const { category } = useParams<{ category?: string }>();
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 200]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 3000]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -111,13 +111,13 @@ const ProductsPage = () => {
             {/* Price Range */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                Price Range: ${priceRange[0]} - ${priceRange[1]}
+                Price Range: ₹{priceRange[0]} - ₹{priceRange[1]}
               </label>
               <div className="flex gap-4 items-center">
                 <input
                   type="range"
                   min="0"
-                  max="200"
+                  max="3000"
                   value={priceRange[0]}
                   onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
                   className="w-full"
@@ -125,7 +125,7 @@ const ProductsPage = () => {
                 <input
                   type="range"
                   min="0"
-                  max="200"
+                  max="3000"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                   className="w-full"
@@ -180,7 +180,7 @@ const ProductsPage = () => {
               onClick={() => {
                 setSelectedSizes([]);
                 setSelectedColors([]);
-                setPriceRange([0, 200]);
+                setPriceRange([0, 3000]);
                 setSearchQuery('');
               }}
             >
@@ -215,7 +215,7 @@ const ProductsPage = () => {
                       <h3 className="font-medium text-lg">{product.name}</h3>
                       <p className="text-gray-500 text-sm mb-2">{product.category}</p>
                       <div className="flex justify-between items-center mt-2">
-                        <span className="font-bold">${product.price.toFixed(2)}</span>
+                        <span className="font-bold">₹{product.price.toFixed(2)}</span>
                         <Button size="sm" className="flex items-center gap-1">
                           <ShoppingBag className="h-4 w-4" />
                           View

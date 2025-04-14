@@ -5,7 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Minus, Plus, Trash2, ShoppingBag, ChevronLeft, AlertCircle } from 'lucide-react';
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 const CartPage = () => {
   const { 
@@ -125,7 +125,7 @@ const CartPage = () => {
                     {/* Price */}
                     <div className="col-span-1 sm:col-span-2 sm:text-center flex justify-between sm:block">
                       <span className="text-sm font-medium sm:hidden">Price:</span>
-                      <span className="text-gray-700">${item.product.price.toFixed(2)}</span>
+                      <span className="text-gray-700">₹{item.product.price.toFixed(2)}</span>
                     </div>
 
                     {/* Quantity */}
@@ -154,7 +154,7 @@ const CartPage = () => {
                     <div className="col-span-1 sm:col-span-2 sm:text-right flex justify-between sm:block">
                       <span className="text-sm font-medium sm:hidden">Total:</span>
                       <span className="font-medium text-gray-900">
-                        ${(item.product.price * item.quantity).toFixed(2)}
+                        ₹{(item.product.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
 
@@ -182,23 +182,23 @@ const CartPage = () => {
             <div className="space-y-3 text-sm border-b border-gray-200 pb-4">
               <div className="flex justify-between">
                 <span className="text-gray-600">Subtotal</span>
-                <span className="font-medium">${subtotal.toFixed(2)}</span>
+                <span className="font-medium">₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Tax (10%)</span>
-                <span className="font-medium">${tax.toFixed(2)}</span>
+                <span className="font-medium">₹{tax.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Shipping</span>
                 <span className="font-medium">
-                  {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
+                  {shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}
                 </span>
               </div>
             </div>
             
             <div className="flex justify-between py-4 border-b border-gray-200 mb-6">
               <span className="font-medium">Total</span>
-              <span className="font-bold text-lg">${total.toFixed(2)}</span>
+              <span className="font-bold text-lg">₹{total.toFixed(2)}</span>
             </div>
 
             {/* Coupon Code */}
@@ -221,7 +221,7 @@ const CartPage = () => {
               {shipping === 0 && (
                 <div className="flex items-start mt-3 text-xs text-green-600">
                   <AlertCircle size={12} className="mr-1 flex-shrink-0 mt-0.5" />
-                  <span>Free shipping applied for orders over $100!</span>
+                  <span>Free shipping applied for orders over ₹2000!</span>
                 </div>
               )}
             </div>

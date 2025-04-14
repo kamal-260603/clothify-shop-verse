@@ -23,8 +23,8 @@ const ProductDetailPage = () => {
       setProduct(foundProduct);
       // Set default selections if product exists
       if (foundProduct) {
-        if (foundProduct.sizes.length > 0) setSelectedSize(foundProduct.sizes[0]);
-        if (foundProduct.colors.length > 0) setSelectedColor(foundProduct.colors[0]);
+        if (foundProduct.sizes && foundProduct.sizes.length > 0) setSelectedSize(foundProduct.sizes[0]);
+        if (foundProduct.colors && foundProduct.colors.length > 0) setSelectedColor(foundProduct.colors[0]);
       }
     }
   }, [id]);
@@ -45,6 +45,7 @@ const ProductDetailPage = () => {
     if (!selectedSize) {
       toast({
         title: "Please select a size",
+        description: "Please select a size before adding to cart",
         variant: "destructive",
       });
       return;
@@ -53,17 +54,13 @@ const ProductDetailPage = () => {
     if (!selectedColor) {
       toast({
         title: "Please select a color",
+        description: "Please select a color before adding to cart",
         variant: "destructive",
       });
       return;
     }
     
-    addToCart({
-      ...product,
-      selectedSize,
-      selectedColor,
-      quantity,
-    });
+    addToCart(product, quantity, selectedSize, selectedColor);
     
     toast({
       title: "Added to cart",
@@ -98,7 +95,7 @@ const ProductDetailPage = () => {
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
           <p className="text-gray-500 capitalize mb-4">{product.category}'s Collection</p>
           
-          <div className="text-2xl font-bold mb-6">${product.price.toFixed(2)}</div>
+          <div className="text-2xl font-bold mb-6">₹{product.price.toFixed(2)}</div>
           
           <p className="text-gray-700 mb-6">{product.description}</p>
           
