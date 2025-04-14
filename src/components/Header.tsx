@@ -1,9 +1,9 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ShoppingBag, User, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '../contexts/CartContext';
+import Profile from './Profile';
 
 const Header = () => {
   const { cartItems } = useCart();
@@ -43,14 +43,12 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* Action Icons */}
+          {/* Action Icons and Profile */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="ghost" size="icon" className="text-gray-700 hover:text-lavender transition-colors">
               <Search size={20} />
             </Button>
-            <Button variant="ghost" size="icon" className="text-gray-700 hover:text-lavender transition-colors">
-              <User size={20} />
-            </Button>
+            <Profile />
             <Link to="/cart" className="relative">
               <Button variant="ghost" size="icon" className="text-gray-700 hover:text-lavender transition-colors">
                 <ShoppingBag size={20} />
@@ -122,6 +120,9 @@ const Header = () => {
                 <Button variant="ghost" size="icon" className="text-gray-700 hover:text-lavender transition-colors">
                   <User size={20} />
                 </Button>
+              </div>
+              <div className="pt-4">
+                <Profile />
               </div>
             </nav>
           </div>
