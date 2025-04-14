@@ -89,3 +89,13 @@ export const getProductsByCategory = (category: string) => {
 export const getProductById = (id: string) => {
   return products.find(product => product.id === id);
 };
+
+// Function to get featured products - limiting to the number specified or returning all if no limit is provided
+export const getFeaturedProducts = (limit?: number) => {
+  // For now, we'll just return products up to the limit
+  // In a real app, you might have a "featured" flag or use other criteria
+  if (limit && limit > 0) {
+    return products.slice(0, limit);
+  }
+  return products;
+};
